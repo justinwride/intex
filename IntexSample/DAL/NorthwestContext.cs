@@ -15,5 +15,7 @@ namespace IntexSample.DAL
         }
 
         public DbSet<Accounts> Account { get; set; }
+
+        public System.Data.Entity.DbSet<IntexSample.Models.CustomerAccount> CustomerAccounts { get; set; }
     }
 }

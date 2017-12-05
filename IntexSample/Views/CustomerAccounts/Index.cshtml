@@ -1,0 +1,105 @@
+﻿@model IEnumerable<IntexSample.Models.CustomerAccount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.accountID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custZip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custAreaCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custBalanceDue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.accountID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custAreaCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custBalanceDue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.customerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.customerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.customerID })
+        </td>
+    </tr>
+}
+
+</table>

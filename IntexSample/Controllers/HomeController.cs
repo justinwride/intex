@@ -36,7 +36,7 @@ namespace IntexSample.Controllers
                 FormsAuthentication.SetAuthCookie(username, rememberMe);
 
                 TempData["myObject"] = oAccount;
-                TempData["AccountID"] = oAccount.AccountID;
+                TempData["AccountID"] = oAccount.accountID;
 
                 Response.Cookies["AccountName"].Value = oAccount.AccountName;
                 Response.Cookies["AccountName"].Expires = DateTime.Now.AddHours(1);

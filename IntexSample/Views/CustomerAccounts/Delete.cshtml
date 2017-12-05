@@ -1,0 +1,128 @@
+﻿@model IntexSample.Models.CustomerAccount
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CustomerAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.accountID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accountID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custZip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custZip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custAreaCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custAreaCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custBalanceDue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custBalanceDue)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

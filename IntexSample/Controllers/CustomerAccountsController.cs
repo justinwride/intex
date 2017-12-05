@@ -11,12 +11,12 @@ using IntexSample.Models;
 
 namespace IntexSample.Controllers
 {
-    public class AccountsController : Controller
+    public class CustomerAccountsController : Controller
     {
         private NorthwestContext db = new NorthwestContext();
         static string personType = "client";
 
-        // GET: Accounts
+        // GET: CustomerAccounts
         public ActionResult Index(string AccountType)
         {
             if (AccountType == "client")
@@ -28,111 +28,106 @@ namespace IntexSample.Controllers
             {
                 return View(db.Account.ToList());
             }
+
+            return View(db.CustomerAccounts.ToList());
         }
 
-        // GET: Accounts/Details/5
+        // GET: CustomerAccounts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Accounts accounts = db.Account.Find(id);
-            if (accounts == null)
+            CustomerAccount customerAccount = db.CustomerAccounts.Find(id);
+            if (customerAccount == null)
             {
                 return HttpNotFound();
             }
-            return View(accounts);
+            return View(customerAccount);
         }
 
-        // GET: Accounts/Create
+        // GET: CustomerAccounts/Create
         public ActionResult Create(string AccountType)
         {
-            if(AccountType == "employee")
+            if (AccountType == "employee")
             {
                 personType = "employee";
             }
-            
+
             return View();
         }
 
-        // POST: Accounts/Create
+        // POST: CustomerAccounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccountID,AccountName,AccountPassword,AccountType")] Accounts accounts)
+        public ActionResult Create([Bind(Include = "customerID,accountID,AccountName,AccountPassword,AccountType,custFirstName,custLastName,custAddress,custCity,custState,custZip,custAreaCode,custPhoneNumber,custBalanceDue")] CustomerAccount customerAccount)
         {
-            accounts.AccountType = personType;
-            personType = "client";
-
-            var oPerson = db.Database.SqlQuery<Accounts>("SELECT * FROM Accounts WHERE accountID = (SELECT MAX(accountID) FROM Accounts);").First();
-            accounts.accountID = oPerson.accountID + 1;
             if (ModelState.IsValid)
             {
-                //db.Database.ExecuteSqlCommand("INSERT INTO Accounts('accountID','accountName','accountPassword','accountType') VALUES("+ accounts.accountID +",'"+ accounts.AccountName +"','"+ accounts.AccountPassword +"','"+ accounts.AccountType +"')");
-
-                db.Account.Add(accounts);
+                db.CustomerAccounts.Add(customerAccount);
                 db.SaveChanges();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index");
             }
 
-            return View(accounts);
+            return View(customerAccount);
         }
 
-        // GET: Accounts/Edit/5
+        // GET: CustomerAccounts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Accounts accounts = db.Account.Find(id);
-            if (accounts == null)
+            CustomerAccount customerAccount = db.CustomerAccounts.Find(id);
+            if (customerAccount == null)
             {
                 return HttpNotFound();
             }
-            return View(accounts);
+            return View(customerAccount);
         }
 
-        // POST: Accounts/Edit/5
+        // POST: CustomerAccounts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccountID,AccountName,AccountPassword,AccountType")] Accounts accounts)
+        public ActionResult Edit([Bind(Include = "customerID,accountID,AccountName,AccountPassword,AccountType,custFirstName,custLastName,custAddress,custCity,custState,custZip,custAreaCode,custPhoneNumber,custBalanceDue")] CustomerAccount customerAccount)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(accounts).State = EntityState.Modified;
+                db.Entry(customerAccount).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(accounts);
+            return View(customerAccount);
         }
 
-        // GET: Accounts/Delete/5
+        // GET: CustomerAccounts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Accounts accounts = db.Account.Find(id);
-            if (accounts == null)
+            CustomerAccount customerAccount = db.CustomerAccounts.Find(id);
+            if (customerAccount == null)
             {
                 return HttpNotFound();
             }
-            return View(accounts);
+            return View(customerAccount);
         }
 
-        // POST: Accounts/Delete/5
+        // POST: CustomerAccounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Accounts accounts = db.Account.Find(id);
-            db.Account.Remove(accounts);
+            CustomerAccount customerAccount = db.CustomerAccounts.Find(id);
+            db.CustomerAccounts.Remove(customerAccount);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

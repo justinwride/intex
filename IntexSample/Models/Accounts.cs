@@ -12,7 +12,7 @@ namespace IntexSample.Models
     public class Accounts
     {
         [Key]
-        public int AccountID { get; set; }
+        public int accountID { get; set; }
 
         [Required(ErrorMessage = "Please enter a username")]
         [DisplayName("Username")]
