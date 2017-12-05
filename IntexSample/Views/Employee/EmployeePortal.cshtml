@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Employee Portal";
+}
+
+<h2>Employee Portal</h2>
+
+<p>All the options for employees:</p>
+
+<p><a class="btn btn-primary btn-lg" href="@Url.Action("Index","Accounts", new { AccountType = "client" })">Manage Clients</a></p>
+<p><a class="btn btn-primary btn-lg" href="@Url.Action("Create","Accounts", new { AccountType = "employee" })">Add Employee</a></p>
+<p><a class="btn btn-primary btn-lg" href="@Url.Action("Create","Accounts", new { AccountType = "client" })">Add Client</a></p>
+

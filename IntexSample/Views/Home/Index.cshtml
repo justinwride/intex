@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Northwest Labs</h1>
+    <p class="lead">Northwest Labs Description</p>
+    <p><a href="" class="btn btn-primary btn-lg">Hello &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Login</h2>
+        <p>
+            <!--EMPLOYEES OR CLIENTS CAN LOGIN HERE AND BE REDIRECTED TO THE APPROPRIATE PAGE-->
+            Go here to log in:
+        </p>
+        <p><a class="btn btn-primary btn-lg" href="@Url.Action("Login")">Login</a></p>
+        <p><a class="btn btn-primary btn-lg" href="@Url.Action("Create","Accounts")">Create Account</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Client</h2>
+        <p>Login here:</p>
+        <!--REDIRECTS TO THE CLIENT PAGE-->
+        <p><a class="btn btn-primary btn-lg" href="@Url.Action("ClientPortal","Client")">Login</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Employee</h2>
+        <p>Login here:</p>
+        <!--REDIRECTS TO THE EMPLOYEE PAGE-->
+        <p><a class="btn btn-primary btn-lg" href="@Url.Action("EmployeePortal","Employee")">Login</a></p>
+    </div>
+</div>
