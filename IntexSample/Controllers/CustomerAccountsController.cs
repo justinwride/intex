@@ -63,16 +63,16 @@ namespace IntexSample.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "customerID,accountID,AccountName,AccountPassword,AccountType,custFirstName,custLastName,custAddress,custCity,custState,custZip,custAreaCode,custPhoneNumber,custBalanceDue")] CustomerAccount customerAccount)
+        public ActionResult Create([Bind(Include = "customerID,accountID,AccountName,AccountPassword,AccountType,custFirstName,custLastName,custAddress,custCity,custState,custZip,custAreaCode,custPhoneNumber,custBalanceDue")] CustomerAccount c)
         {
             if (ModelState.IsValid)
             {
-                db.CustomerAccounts.Add(customerAccount);
-                db.SaveChanges();
+                db.Database.ExecuteSqlCommand("INSERT INTO Customer (custFirstName,custLastName,custAddress,custCity,custState,custZIP,custAreaCode,custPhoneNumber,accountID,creditID,salesRepID,custBalanceDue) VALUES ('" + c.custFirstName + "','" + c.custLastName + "','"+ c.custAddress +"')");
+
                 return RedirectToAction("Index");
             }
 
-            return View(customerAccount);
+            return View(c);
         }
 
         // GET: CustomerAccounts/Edit/5
