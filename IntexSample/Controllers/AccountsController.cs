@@ -71,8 +71,6 @@ namespace IntexSample.Controllers
             if (ModelState.IsValid)
             {
                 //db.Database.ExecuteSqlCommand("INSERT INTO Accounts('accountID','accountName','accountPassword','accountType') VALUES("+ accounts.accountID +",'"+ accounts.AccountName +"','"+ accounts.AccountPassword +"','"+ accounts.AccountType +"')");
-                db.Database.ExecuteSqlCommand("INSERT INTO Customer (custFirstName,custLastName,custAddress,custCity,custState,custZIP,custAreaCode,custPhoneNumber,accountID,creditID,salesRepID,custBalanceDue) VALUES ('" +  +','')");
-
                 return RedirectToAction("Index","Home");
             }
 

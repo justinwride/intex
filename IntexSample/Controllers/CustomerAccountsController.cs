@@ -26,10 +26,8 @@ namespace IntexSample.Controllers
             }
             else
             {
-                return View(db.Account.ToList());
+                return View(db.CustomerAccounts.ToList());
             }
-
-            return View(db.CustomerAccounts.ToList());
         }
 
         // GET: CustomerAccounts/Details/5
@@ -67,9 +65,12 @@ namespace IntexSample.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Database.ExecuteSqlCommand("INSERT INTO Customer (custFirstName,custLastName,custAddress,custCity,custState,custZIP,custAreaCode,custPhoneNumber,accountID,creditID,salesRepID,custBalanceDue) VALUES ('" + c.custFirstName + "','" + c.custLastName + "','"+ c.custAddress +"')");
+                var oPerson = db.Database.SqlQuery<Accounts>("SELECT * FROM Accounts WHERE accountID = (SELECT MAX(accountID) FROM Accounts);").First();
+                c.accountID = oPerson.accountID + 1;
+                db.Database.ExecuteSqlCommand("INSERT INTO Accounts (accountName,accountPassword,accountType) VALUES ('"+ c.AccountName +"','"+ c.AccountPassword +"','client')");
+                db.Database.ExecuteSqlCommand("INSERT INTO Customer (custFirstName,custLastName,custAddress,custCity,custState,custZIP,custPhoneNumber,accountID,creditID,custBalanceDue) VALUES ('" + c.custFirstName + "','" + c.custLastName + "','"+ c.custAddress +"','"+ c.custCity +"','"+ c.custState +"','"+ c.custZip +"','"+ c.custPhoneNumber +"','"+ c.accountID +"',0,0)");
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View(c);
